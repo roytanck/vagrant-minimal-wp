@@ -1,0 +1,1 @@
+This file is here so the html folder can be committed. Git does not allow you to commit empty folders.
