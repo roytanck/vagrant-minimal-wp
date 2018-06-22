@@ -18,6 +18,7 @@ sudo ln -s /etc/nginx/sites-available/site.conf /etc/nginx/sites-enabled/site.co
 # set up PHP
 sudo apt-get -y install php
 sudo apt-get -y install php7.0-gd
+sudo apt-get -y install php7.0-xml
 php -v
 
 # set up mySQL
