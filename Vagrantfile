@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
 	config.vm.network "private_network", ip: "192.168.33.10"
 
 	# Sync a folder that will hold the website
-	config.vm.synced_folder "html/", "/var/www/site"
+	config.vm.synced_folder "html/", "/var/www/site", mount_options: ["dmode=777,fmode=777"]
 
 	# Define the bootstrap file: A (shell) script that runs after first setup of your box (= provisioning)
 	config.vm.provision :shell, path: "provision/bootstrap.sh"
