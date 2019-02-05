@@ -16,16 +16,19 @@ sudo chmod 644 /etc/nginx/sites-available/site.conf
 sudo ln -s /etc/nginx/sites-available/site.conf /etc/nginx/sites-enabled/site.conf
 
 # set up PHP
-sudo apt-get -y install php
-sudo apt-get -y install php7.0-gd
-sudo apt-get -y install php7.0-xml
+sudo apt-get -y install python-software-properties
+sudo add-apt-repository ppa:ondrej/php -y
+sudo apt-get update
+sudo apt-get -y install php7.3
+sudo apt-get -y install php7.3-gd
+sudo apt-get -y install php7.3-xml
 php -v
 
 # set up mySQL
 sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password $PASSWORD"
 sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $PASSWORD"
-sudo apt-get -y install mysql-server
-sudo apt-get -y install php-mysql
+sudo apt-get -y install mysql7.3-server
+sudo apt-get -y install php7.3-mysql
 
 # create a database
 #mysql -uroot p$PASSWORD -e "create database wp"
