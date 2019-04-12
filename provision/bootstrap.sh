@@ -19,19 +19,24 @@ sudo ln -s /etc/nginx/sites-available/site.conf /etc/nginx/sites-enabled/site.co
 sudo apt-get -y install python-software-properties
 sudo add-apt-repository ppa:ondrej/php -y
 sudo apt-get update
-sudo apt-get -y install php7.3
-sudo apt-get -y install php7.3-gd
-sudo apt-get -y install php7.3-xml
+sudo apt-get -y install php7.3-fpm php7.3-cli php7.3-gd php7.3-imagick php7.3-recode php7.3-tidy php7.3-xmlrpc
 php -v
 
 # set up mySQL
 sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password $PASSWORD"
 sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $PASSWORD"
-sudo apt-get -y install mysql7.3-server
+
+sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/dbconfig-install boolean true"
+sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/app-password-confirm password $PASSWORD"
+sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/mysql/admin-pass password $PASSWORD"
+sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/mysql/app-pass password $PASSWORD"
+sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/reconfigure-webserver multiselect none"
+
+sudo apt-get -y install mysql-server
 sudo apt-get -y install php7.3-mysql
+sudo apt-get -y install phpmyadmin
 
 # create a database
-#mysql -uroot p$PASSWORD -e "create database wp"
 mysql -uroot -p$PASSWORD <<MYSQL_SCRIPT
 CREATE DATABASE wp;
 CREATE USER 'wpuser'@'localhost' IDENTIFIED BY '$PASSWORD';

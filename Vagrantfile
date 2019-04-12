@@ -4,7 +4,7 @@
 Vagrant.configure("2") do |config|
 
 	# Every Vagrant development environment requires a box
-	config.vm.box = "ubuntu/xenial64"
+	config.vm.box = "ubuntu/bionic64"
 
 	# Set up the network
 	config.vm.network "private_network", ip: "192.168.33.10"
