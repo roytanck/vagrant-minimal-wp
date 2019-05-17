@@ -3,9 +3,10 @@ Vagrant scripts to set up WordPress (on Ubuntu Xenial, PHP7, NGINX) and nothing 
 
 Use this to set up a minimal WordPress (latest version) install, without any additional (development) tools. Assumes you have Vagrant set up and configured.
 
-* Ubuntu 16.04 LTS
+* Ubuntu 18.04 LTS
 * NGINX
-* PHP 7
+* PHP 7.3
+* PHPMyAdmin
 
 Usage
 
